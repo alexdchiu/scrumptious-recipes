@@ -56,6 +56,7 @@ class Step(models.Model):
   )
   order = models.SmallIntegerField()
   directions = models.CharField(max_length = 300)
+  food_items = models.ManyToManyField("FoodItem", null=True, blank=True)
 
   def __str__(self):
     return str(self.recipe) + " - Step " + str(self.order) + " - " + str(self.directions)
