@@ -11,7 +11,7 @@ class Recipe(models.Model):
   updated = models.DateTimeField(auto_now = True)
 
   def __str__(self):
-    return self.name + " by " + self.author
+    return self.name
     
 
 class Measure(models.Model):
@@ -58,4 +58,4 @@ class Step(models.Model):
   directions = models.CharField(max_length = 300)
 
   def __str__(self):
-    return self.recipe + " " + self.order + " " + self.directions
+    return str(self.recipe) + " - Step " + str(self.order) + " - " + str(self.directions)
