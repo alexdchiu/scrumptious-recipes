@@ -52,7 +52,7 @@ class Step(models.Model):
   recipe = models.ForeignKey(
     Recipe,
     related_name = "steps",
-    on_delete = models.CASCADE
+    on_delete = models.CASCADE,
   )
   order = models.SmallIntegerField()
   directions = models.CharField(max_length = 300)
