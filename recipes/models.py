@@ -47,3 +47,15 @@ class Ingredient(models.Model):
 
   def __str__(self):
     return self.amount + " " + self.measure + " of " + self.food
+
+class Step(models.Model):
+  recipe = models.ForeignKey(
+    Recipe,
+    related_name = "steps",
+    on_delete = models.CASCADE
+  )
+  order = models.SmallIntegerField()
+  directions = models.CharField(max_length = 300)
+
+  def __str__(self):
+    return self.recipe + " " + self.order + " " + self.directions
