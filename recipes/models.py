@@ -28,12 +28,12 @@ class FoodItem(models.Model):
     return self.name
 
 class Ingredient(models.Model):
-  amount = models.FloatField()
   recipe = models.ForeignKey(
     Recipe,
     related_name = "Recipe",
     on_delete = models.CASCADE,
   )
+  amount = models.FloatField()
   measure = models.ForeignKey(
     Measure,
     related_name = "Measure",
