@@ -46,7 +46,7 @@ class Ingredient(models.Model):
   )
 
   def __str__(self):
-    return str(self.amount) + " " + str(self.measure) + " of " + self.food
+    return str(self.amount) + " " + str(self.measure) + " of " + str(self.food)
 
 class Step(models.Model):
   recipe = models.ForeignKey(
