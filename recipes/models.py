@@ -31,17 +31,17 @@ class Ingredient(models.Model):
   amount = models.FloatField()
   recipe = models.ForeignKey(
     "Recipe",
-    related_name = "Recipe",
+    related_name = "ingredients",
     on_delete = models.CASCADE,
   )
   measure = models.ForeignKey(
     "Measure",
-    related_name = "Measure",
+    related_name = "ingredients",
     on_delete = models.PROTECT,
   )
   food = models.ForeignKey(
     "FoodItem",
-    related_name = "FoodItem",
+    related_name = "ingredients",
     on_delete = models.PROTECT,
   )
 

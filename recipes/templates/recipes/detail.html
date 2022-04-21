@@ -43,10 +43,10 @@
           </tr>
         </thead>
         <tbody>
-          {% for ingredient in ingredients.all %}
+          {% for ingredient in recipe.ingredients.all %}
           <tr>
             <td>{{ ingredient.amount }}</td>
-            <td>{{ ingredient.measure.name }}</td>
+            <td>{{ ingredient.measure }}</td>
             <td>{{ ingredient.food.name }}</td>
           </tr>
           {% endfor %}
