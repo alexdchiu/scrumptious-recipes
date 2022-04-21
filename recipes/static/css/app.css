@@ -1,11 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-html,
-button,
-select,
-textarea,
-input {
-  font-family: "Roboto";
+html, button, select, textarea, input {
+  font-family: 'Roboto';
   font-size: 16px;
 }
 
@@ -19,11 +15,11 @@ header nav ul {
 a,
 a:visited {
   text-decoration: none;
-  color: #208acc;
+  color: #208ACC;
 }
 
 button.button {
-  background-color: #e012ad;
+  background-color: #E012AD;
   border: 2px solid transparent;
   border-radius: 4px;
   color: white;
@@ -33,17 +29,16 @@ button.button {
 
 button.button:hover {
   background-color: white;
-  border-color: #e012ad;
-  color: #e012ad;
+  border-color: #E012AD;
+  color: #E012AD;
 }
 
 button.button:active {
   background-color: lightblue;
 }
 
-input,
-textarea {
-  border: 1px solid #e012ad;
+input, textarea {
+  border: 1px solid #E012AD;
   border-radius: 4px;
   padding: 1em 1.5em;
 }
@@ -52,9 +47,8 @@ table {
   margin: auto;
 }
 
-td,
-th {
-  padding: 0.25em 0.5em;
+td, th {
+  padding: .25em .5em;
 }
 
 textarea {
