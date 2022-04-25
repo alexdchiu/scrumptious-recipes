@@ -2,41 +2,39 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrumptious</title>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrumptious</title>
-  <link rel="stylesheet" href="{% static 'css/app.css' %}">
-</head>
-
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li>
-          <a href="{% url 'home' %}">Scrumptious</a>
-        </li>
-        <li>
-          <a href="{% url 'admin:index' %}">Admin</a>
-        </li>
-        <li>
-          <a href="{% url 'recipe_new' %}">Write a recipe</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main class="recipe-grid">
-    {% for recipe in recipes %}
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}">Scrumptious</a>
+          </li>
+          <li>
+            <a href="{% url 'admin:index' %}">Admin</a>
+          </li>
+          <li>
+            <a href="{% url 'recipe_new' %}">Write a recipe</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="recipe-grid">
+      {% for recipe in recipe_list %}
       <div class="recipe-card">
         <h2 class="recipe-card-title">
           <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a>
         </h2>
         <p class="recipe-card-date">{{ recipe.updated }}</p>
       </div>
-    {% endfor %}
-  </main>
-</body>
-
+      {% endfor %}
+    </main>
+  </body>
 </html>
