@@ -54,7 +54,7 @@ def show_recipes(request):
 def show_recipe(request, pk):
     context = {
         "recipe": Recipe.objects.get(pk=pk) if Recipe else None,
-        "rating": RatingForm(),    
+        "rating_form": RatingForm(),    
     }
     return render(request, "recipes/detail.html", context)
 
