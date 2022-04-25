@@ -6,8 +6,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrumptious</title>
+    <title>New Tag - Scrumptious</title>
     <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    {% load markdownify %}
   </head>
 
   <body>
@@ -24,20 +25,21 @@
             <a href="{% url 'recipe_new' %}">Write a recipe</a>
           </li>
           <li>
+            <a href="{% url 'tags_list' %}">Tags</a>
+          </li>
+          <li>
             <a href="{% url 'tag_new' %}">Make a New Tag</a>
           </li>
         </ul>
       </nav>
     </header>
-    <main class="recipe-grid">
-      {% for tag in tag_list %}
-      <div class="recipe-card">
-        <h2 class="recipe-card-title">
-          <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a>
-        </h2>
-        <p class="recipe-card-date">{{ recipe.updated }}</p>
+    <main class="recipe-detail">
+      <div>
+        <a href="{% url "tag_edit" tag.id %}">Edit</a>
+        <a href="{% url "tag_delete" recipe.id %}">Delete</a>
       </div>
-      {% endfor %}
+      <h1>{{ tag.name }}</h1>
+      <p>Created on {{ tag.created }} | Updated on {{ tag.updated }}</p>
     </main>
   </body>
 </html>

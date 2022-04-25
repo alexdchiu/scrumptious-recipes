@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+
 from recipes.forms import RatingForm
 
 try:
@@ -26,7 +27,9 @@ def log_rating(request, recipe_id):
 
 class RecipeListView(ListView):
     model = Recipe
+    paginate_by = 2
     template_name = "recipes/list.html"
+
 
 
 class RecipeDetailView(DetailView):
