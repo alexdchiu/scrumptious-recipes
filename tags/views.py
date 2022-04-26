@@ -20,7 +20,7 @@ class TagDetailView(DetailView):
 
 class TagCreateView(CreateView):
     model = Tag
-    fields = ["tag", "author"]
+    fields = ["name", "recipes"]
     template_name = "tags/create.html"
 
 class TagUpdateView(UpdateView):
