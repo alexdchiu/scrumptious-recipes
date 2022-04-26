@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from tags.models import Tag
 
@@ -18,19 +18,19 @@ class TagDetailView(DetailView):
     model = Tag
     template_name = "tags/detail.html"
 
-class TagCreateView(CreateView):
+class TagCreateView(LoginRequiredMixin, CreateView):
     model = Tag
     fields = ["name", "recipes"]
     template_name = "tags/new.html"
     success_url = reverse_lazy("tags_list")
 
-class TagUpdateView(UpdateView):
+class TagUpdateView(LoginRequiredMixin, UpdateView):
     model = Tag
     fields = ["name", "recipes"]
     template_name = "tags/edit.html"
     success_url = reverse_lazy("tags_list")
 
-class TagDeleteView(DeleteView):
+class TagDeleteView(LoginRequiredMixin, DeleteView):
     model = Tag
     template_name = "tags/delete.html"
     success_url = reverse_lazy("tags_list")
