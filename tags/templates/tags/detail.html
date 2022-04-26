@@ -36,10 +36,12 @@
     <main class="recipe-detail">
       <div>
         <a href="{% url "tag_edit" tag.id %}">Edit</a>
-        <a href="{% url "tag_delete" recipe.id %}">Delete</a>
+        <a href="{% url "tag_delete" tag.id %}">Delete</a>
       </div>
       <h1>{{ tag.name }}</h1>
-      <p>Created on {{ tag.created }} | Updated on {{ tag.updated }}</p>
+      <p>{% for recipe in tag.recipes.all %}{{ recipe }}
+        {% endfor %}
+      </p>
     </main>
   </body>
 </html>
