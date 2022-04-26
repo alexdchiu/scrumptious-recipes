@@ -4,10 +4,12 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
 
 from recipes.forms import RatingForm
 from recipes.models import Recipe
 
+USER_MODEL = settings.AUTH_USER_MODEL
 
 
 def log_rating(request, recipe_id):
@@ -28,7 +30,10 @@ class RecipeListView(ListView):
     paginate_by = 2
     template_name = "recipes/list.html"
 
-
+class UserListView(ListView):
+    model = USER_MODEL
+    context_object_name = "users"
+    template_name = "recipes/users.html"
 
 class RecipeDetailView(DetailView):
     model = Recipe
@@ -55,6 +60,9 @@ class RecipeUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "recipes/edit.html"
     fields = ["name", "author", "description", "image"]
     success_url = reverse_lazy("recipes_list")
+
+    def form_valid(self, form):
+        form.instance.edited_by = self.request.user
 
 class RecipeDeleteView(LoginRequiredMixin, DeleteView):
     model = Recipe

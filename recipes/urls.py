@@ -7,7 +7,7 @@ from recipes.views import (
     log_rating,
     RecipeDetailView,
     RecipeListView,
-    
+    UserListView,
 )
 
 from tags.views import (
@@ -22,4 +22,5 @@ urlpatterns = [
     path("<int:pk>/edit/", RecipeUpdateView.as_view(), name="recipe_edit"),
     path("<int:recipe_id>/ratings/", log_rating, name="recipe_rating"),
     path("tags/list", TagListView.as_view(), name="tags_list"),
+    path("users/", UserListView.as_view(), name="users_list"),
 ]

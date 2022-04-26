@@ -7,7 +7,8 @@ USER_MODEL = settings.AUTH_USER_MODEL
 # Create your models here.
 class Recipe(models.Model):
     name = models.CharField(max_length=125)
-    author = models.ForeignKey(USER_MODEL, related_name="recipes", on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(USER_MODEL,related_name="recipes", on_delete=models.CASCADE, null=True)
+    edited_by = USER_MODEL
     description = models.TextField()
     image = models.URLField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
