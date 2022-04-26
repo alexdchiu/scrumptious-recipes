@@ -7,8 +7,8 @@ try:
         class Meta:
             model = Tag
             fields = [
-                "tag",
-                "author",
+                "name",
+                "recipes",
             ]
 
 except Exception:
