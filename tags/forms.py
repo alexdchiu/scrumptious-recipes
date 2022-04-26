@@ -8,5 +8,6 @@ class TagForm(forms.ModelForm):
         model = Tag
         fields = [
             "name",
+            "author",
             "recipes",
         ]
