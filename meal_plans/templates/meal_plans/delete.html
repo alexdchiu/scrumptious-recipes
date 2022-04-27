@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ mealplan }}"?</p>
+    {{ form.as_p }}
+    <div class="control">
+      <button class="button">Delete</button>
+    </div>
+  </form>
+</main>
+{% endblock content %}

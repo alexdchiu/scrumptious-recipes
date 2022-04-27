@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "markdownify.apps.MarkdownifyConfig",
     "recipes.apps.RecipesConfig",
     "tags.apps.TagsConfig",
+    "meal_plans.apps.MealPlansConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
