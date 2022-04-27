@@ -1,3 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<main class="recipe-form">{% for user in users %} {{ user }}</main>
+<main class="recipe-form">
+  {% for user in users %} {{ user }} {% for recipe in user.recipes.all %}
+  <li>{{ recipe }}</li>
+  {% endfor %} {% endfor %}
+</main>
 {% endblock content %}

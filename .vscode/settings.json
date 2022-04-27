@@ -4,3 +4,11 @@
   "python.linting.enabled": true,
   "editor.formatOnSave": true
 }
+
+"beautify.language": {
+  "html": [
+      "htm",
+      "html",
+      "django-html"
+  ]
+},
