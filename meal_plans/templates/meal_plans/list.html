@@ -6,8 +6,11 @@
       <a href="{% url 'meal_plan_detail' mealplan.id %}">{{ mealplan.name }}</a>
     </h2>
     <p>Delivery Date: {{ mealplan.date }}</p>
+      {% for recipe in mealplan.recipes.all %}<a href="{% url 'recipe_detail' recipe.pk %}">
+        <li>{{ recipe }}</a></li>
     {% empty %}
     <h2 class="recipe-card-title">There are no meal plans yet.</h2>
+    {% endfor %}
   </div>
   {% endfor %}
 </main>

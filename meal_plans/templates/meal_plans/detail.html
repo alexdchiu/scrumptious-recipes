@@ -8,8 +8,9 @@
       <h1>{{ mealplan.name }}</h1>
       <h3>Owner: {{ mealplan.owner | default_if_none:"Unknown" }}
       <p>Date to Serve: {{ mealplan.date }}</p>
-      <p>{% for recipe in mealplan.recipes.all %}<a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe }}</a>
-        / {% endfor %}
+      <p>{% for recipe in mealplan.recipes.all %}
+        <li><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe }}</a></li>
+      {% endfor %}
       </p></h3>
     </main>
 {% endblock content %}
