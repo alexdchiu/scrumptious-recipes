@@ -17,13 +17,11 @@
           <li>
             <a href="{% url 'home' %}">Scrumptious</a>
           </li>
-          {% if user.is_authenticated %}
-          <li>
-            <a href="{% url 'admin:index' %}">Admin</a>
-          </li>
-          {% endif %}
           <li>
             <a href="{% url 'recipe_new' %}">Write a recipe</a>
+          </li>
+          <li>
+            <a href="{% url 'users_list' %}">Users</a>
           </li>
           <li>
             <a href="{% url 'tags_list' %}">Tags</a>
@@ -31,7 +29,11 @@
           <li>
             <a href="{% url 'tag_new' %}">Create a Tag</a>
           </li>
-          {% if request.user.is_authenticated %}
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'admin:index' %}">Admin</a>
+          </li>
+          {% endif %} {% if request.user.is_authenticated %}
           <li>
             <a href="{% url 'logout' %}">Logout</a>
           </li>
