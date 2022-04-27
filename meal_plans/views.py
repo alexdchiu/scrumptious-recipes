@@ -19,12 +19,12 @@ class MealPlanDetailView(DetailView):
 
 class MealPlanCreateView(LoginRequiredMixin, CreateView):
     model = MealPlan
-    fields = ["name", "recipes"]
+    fields = ["name", "recipes", "date"]
     template_name = "meal_plans/create.html"
     success_url = reverse_lazy("meal_plans_list")
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.owner = self.request.user
         return super().form_valid(form)
 
 class MealPlanUpdateView(LoginRequiredMixin, UpdateView):

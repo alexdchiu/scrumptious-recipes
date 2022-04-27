@@ -9,4 +9,5 @@ class MealPlanForm(forms.ModelForm):
       "name",
       "owner",
       "recipes",
+      "date",
     ]
