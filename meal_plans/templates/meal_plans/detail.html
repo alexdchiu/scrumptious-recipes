@@ -6,9 +6,10 @@
         <a href="{% url "meal_plan_delete" mealplan.id %}">Delete</a>
       </div>
       <h1>{{ mealplan.name }}</h1>
-      <h2>Owner: {{ mealplan.owner | default_if_none:"Unknown" }}
+      <h3>Owner: {{ mealplan.owner | default_if_none:"Unknown" }}
+      <p>Date to Serve: {{ mealplan.date }}</p>
       <p>{% for recipe in mealplan.recipes.all %}<a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe }}</a>
         / {% endfor %}
-      </p>
+      </p></h3>
     </main>
 {% endblock content %}
