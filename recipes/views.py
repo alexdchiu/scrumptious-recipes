@@ -28,23 +28,6 @@ def log_rating(request, recipe_id):
                 return redirect("recipes_list")            
     return redirect("recipe_detail", pk=recipe_id)
 
-@require_http_methods(["POST"])
-def create_shopping_item(request):
-    ingredient_id = request.POST.get("ingredient_id")
-    ingredient = Ingredient.objects.get(id=ingredient_id)
-    user = request.user
-
-    try:
-        ShoppingItem.objects.create(
-            food_item = ingredient.food,
-            user = user
-        )
-    
-    except IntegrityError:
-        pass
-
-    return redirect("recipe_detail", pk = ingredient.recipe.id)
-
 def delete_all_shopping_items(request):
     ShoppingItem.objects.filter(user=request.user).delete()
     return redirect("shopping_items.html")
@@ -108,4 +91,22 @@ class ShoppingItemListView(LoginRequiredMixin, ListView):
     template_name = "shopping_items/list.html"
 
     def get_queryset(self):
-        return ShoppingItem.objects.filter(owner=self.request.user)
+        return ShoppingItem.objects.filter(user=self.request.user)
+
+
+@require_http_methods(["POST"])
+def create_shopping_item(request):
+    ingredient_id = request.POST.get("ingredient_id")
+    ingredient = Ingredient.objects.get(id=ingredient_id)
+    user = request.user
+
+    try:
+        ShoppingItem.objects.create(
+            food_item = ingredient.food,
+            user = user
+        )
+    
+    except IntegrityError:
+        pass
+
+    return redirect("recipe_detail", pk = ingredient.recipe.id)

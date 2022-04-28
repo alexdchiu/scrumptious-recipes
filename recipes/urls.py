@@ -27,6 +27,6 @@ urlpatterns = [
     path("tags/list/", TagListView.as_view(), name="tags_list"),
     path("users/", UserListView.as_view(), name="users_list"),
     path("shopping_items/", ShoppingItemListView.as_view(), name="shopping_items_list"),
-    path("shopping_items/create/",create_shopping_item,name="create_shopping_item"),
-    path("shopping_items/delete/",delete_all_shopping_items,"delete_all_shopping_items"),
+    path("shopping_items/create/", create_shopping_item, name="create_shopping_item"),
+    path("shopping_items/delete/", delete_all_shopping_items, name="delete_all_shopping_items"),
 ]

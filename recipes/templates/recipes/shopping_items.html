@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <h1>Your Shopping List</h1>
+  <div>
+    <form method="post" action="{% url 'delete_all_shopping_items' %}">
+      {% csrf_token %}
+      <button class="button">Delete All</button>
+    </form>
+  </div>
+  <ul>
+    {% for item in shoppingitem_list %}
+    <li>{{ item.food_item.name }}</li>
+  </ul>
+</main>
+{% endblock content %}
