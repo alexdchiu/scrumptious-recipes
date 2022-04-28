@@ -26,6 +26,7 @@
           <li>
             <a href="{% url 'tags_list' %}">Tags</a>
           </li>
+          {% if user.is_authenticated %}
           <li>
             <a href="{% url 'tag_new' %}">Create a Tag</a>
           </li>
@@ -35,7 +36,6 @@
           <li>
             <a href="{% url 'meal_plan_create' %}">Create a Meal Plan</a>
           </li>
-          {% if user.is_authenticated %}
           <li>
             <a href="{% url 'admin:index' %}">Admin</a>
           </li>
