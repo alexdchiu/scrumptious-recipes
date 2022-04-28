@@ -78,4 +78,4 @@ class ShoppingItem(models.Model):
     food_item = models.ForeignKey("FoodItem", related_name="shopping_items",on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.name
+        return str(self.food_item)

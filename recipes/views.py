@@ -30,7 +30,7 @@ def log_rating(request, recipe_id):
 
 def delete_all_shopping_items(request):
     ShoppingItem.objects.filter(user=request.user).delete()
-    return redirect("shopping_items_list")
+    return redirect("shopping_item_list")
 
 class RecipeListView(ListView):
     model = Recipe
