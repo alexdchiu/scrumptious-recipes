@@ -32,19 +32,29 @@ class RecipeListView(ListView):
     paginate_by = 2
     template_name = "recipes/list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from pprint import pprint
+        pprint(context)
+        return context
+
+
 class UserListView(ListView):
     model = User
     context_object_name = "users"
     template_name = "recipes/users.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from pprint import pprint
+        pprint(context)
+        return context
+
 
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = "recipes/detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["rating_form"] = RatingForm()
-        return context
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe

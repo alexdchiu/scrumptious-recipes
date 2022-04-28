@@ -1,14 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 <main class="recipe-grid">
+  {% for user in users %} {% if user.recipes.all %}
   <div class="recipe-card">
     <h2 class="recipe-card-title">
-      Recipes by: {% for user in users %} {{ user }} 
+      Recipes by:
+      <p>{{ user }}</p>
     </h2>
-  {% for recipe in user.recipes.all %}
-  <p class="recipe-card-date">
-    <li>
-      <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe }}
-    </li>
-  {% endfor %} {% endfor %}
+    {% for recipe in user.recipes.all %}
+    <p class="recipe-card-date">
+      <li>
+        <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe }}</a>
+      </li>
+    </p>
+    {% endfor %}
+  </div>
+  {% endif %} {% endfor %}
 </main>
 {% endblock content %}

@@ -13,7 +13,7 @@
   <body>
     <header>
       <nav>
-        <ul class="nav-ul">
+        <ul>
           <li>
             <a href="{% url 'home' %}">Scrumptious</a>
           </li>
@@ -41,7 +41,7 @@
           </li>
           {% endif %} {% if request.user.is_authenticated %}
           <li>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'logout' %}">Logout (User: {{ user }})</a>
           </li>
           {% else %}
           <li>
