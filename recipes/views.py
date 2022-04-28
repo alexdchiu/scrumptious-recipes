@@ -64,7 +64,7 @@ class RecipeDetailView(DetailView):
         context["rating_form"] = RatingForm()
 
         foods = []
-        
+
         for item in self.request.user.shopping_items.all():
             foods.append(item.food_item)
         
@@ -105,12 +105,6 @@ class ShoppingItemListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return ShoppingItem.objects.filter(user=self.request.user)
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        from pprint import pprint
-        pprint(context)
-        return context
 
 
 @require_http_methods(["POST"])
@@ -122,7 +116,7 @@ def create_shopping_item(request):
     try:
         ShoppingItem.objects.create(
             food_item = ingredient.food,
-            user = user
+            user = user,
         )
     
     except IntegrityError:
