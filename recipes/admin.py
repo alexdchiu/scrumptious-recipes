@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from recipes.models import Recipe, Measure, FoodItem, Ingredient, Step, Rating, ShoppingItem,
+from recipes.models import Recipe, Measure, FoodItem, Ingredient, Step, Rating, ShoppingItem
 
 
 # Register your models here.
