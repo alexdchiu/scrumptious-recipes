@@ -30,7 +30,7 @@ def log_rating(request, recipe_id):
 
 def delete_all_shopping_items(request):
     ShoppingItem.objects.filter(user=request.user).delete()
-    return redirect("shopping_items.html")
+    return redirect("shopping_items_list")
 
 class RecipeListView(ListView):
     model = Recipe
@@ -92,6 +92,12 @@ class ShoppingItemListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return ShoppingItem.objects.filter(user=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from pprint import pprint
+        pprint(context)
+        return context
 
 
 @require_http_methods(["POST"])

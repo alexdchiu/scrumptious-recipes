@@ -27,9 +27,10 @@
             <a href="{% url 'tags_list' %}">Tags</a>
           </li>
           <li>
-            <a href="{% url 'shopping_items_list' %}">Shop List</a>
+            <a href="{% url 'shopping_items_list' %}"
+              >Shop List ({{ user.shopping_items.all|length }})</a
+            >
           </li>
-          {% comment %} ({{ user.shopping_items.all|length }}) {% endcomment %}
           {% if user.is_authenticated %}
           <li>
             <a href="{% url 'tag_new' %}">Create a Tag</a>
