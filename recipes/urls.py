@@ -8,6 +8,9 @@ from recipes.views import (
     RecipeDetailView,
     RecipeListView,
     UserListView,
+    create_shopping_item,
+    delete_all_shopping_items,
+    ShoppingItemListView,
 )
 
 from tags.views import (
@@ -21,6 +24,9 @@ urlpatterns = [
     path("new/", RecipeCreateView.as_view(), name="recipe_new"),
     path("<int:pk>/edit/", RecipeUpdateView.as_view(), name="recipe_edit"),
     path("<int:recipe_id>/ratings/", log_rating, name="recipe_rating"),
-    path("tags/list", TagListView.as_view(), name="tags_list"),
+    path("tags/list/", TagListView.as_view(), name="tags_list"),
     path("users/", UserListView.as_view(), name="users_list"),
+    path("shopping_items/", ShoppingItemListView.as_view(), name="shopping_items_list"),
+    path("shopping_items/create/",create_shopping_item,name="create_shopping_item"),
+    path("shopping_items/delete/",delete_all_shopping_items,"delete_all_shopping_items"),
 ]
