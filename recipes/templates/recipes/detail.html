@@ -19,7 +19,7 @@
       <p>Updated on {{ recipe.updated }}</p>
       {% if recipe.servings %}
         <p>
-          Serves {{ recipe.servings }} people 
+          Serves {{ recipe.servings }} portions 
         </p>
         <form method="get"> 
           <input type="number" name="servings" required>
@@ -32,7 +32,14 @@
       </form>
       <p>Tags: {% for tag in recipe.tags.all %}<a href="{% url 'tag_detail' tag.pk %}">{{ tag.name }}</a> / {% endfor %}</p>
       {{ recipe.description | markdownify }}
-      <h2>Ingredients</h2>
+      <h2>Ingredients 
+        {% if servings %}
+        (updated for {{ servings }} servings)
+      <a href="{% url 'recipe_detail' recipe.pk %}">
+        <button>To Return to Original Amounts in Recipe</button>
+      </a>
+        {% endif %}
+      </h2>
       <table>
         <thead>
           <tr>
