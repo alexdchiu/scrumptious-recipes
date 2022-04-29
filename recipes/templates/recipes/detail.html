@@ -13,10 +13,20 @@
       <h1>{{ recipe.name }}</h1>
       <h2>by: {{ recipe.author | default_if_none:"Unknown" }}</h2>
       <h2>by: {{ recipe.edited_by }}</h2>
-      <p>Created on {{ recipe.created }} | Updated on {{ recipe.updated }}</p>
-      <form method="post" action="{% url 'recipe_rating' recipe.id %}">
-        {% csrf_token %} {{ rating_form.as_p }}
-        <button class="button">Rate</button>
+      <p>Created on {{ recipe.created }} </p>
+      <p>Updated on {{ recipe.updated }}</p>
+      {% if recipe.servings %}
+        <p>
+          Serves {{ recipe.servings }} people 
+        </p>
+        <form method="get"> 
+          <input type="number" name="servings" required>
+          <p><button class="button">Resize</button></p>
+        </form> 
+      {% endif %}
+      <p><form method="post" action="{% url 'recipe_rating' recipe.id %}">
+        {% csrf_token %} Rating {{ rating_form }} </p>
+        <p><button class="button">Rate</button></p>
       </form>
       <p>Tags: {% for tag in recipe.tags.all %}<a href="{% url 'tag_detail' tag.pk %}">{{ tag.name }}</a> / {% endfor %}</p>
       {{ recipe.description | markdownify }}
