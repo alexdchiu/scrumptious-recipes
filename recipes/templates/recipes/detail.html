@@ -13,16 +13,16 @@
       <img src="{{ recipe.image }}" class="pull-right" />
       {% endif %}
       <h1>{{ recipe.name }}</h1>
-      <h2>by: {{ recipe.author | default_if_none:"Unknown" }}</h2>
-      <h2>by: {{ recipe.edited_by }}</h2>
+      <h2>Recipe by: {{ recipe.author | default_if_none:"Unknown" }}</h2>
       <p>Created on {{ recipe.created }} </p>
+      <h2>Edited by: {{ recipe.edited_by }}</h2>
       <p>Updated on {{ recipe.updated }}</p>
       {% if recipe.servings %}
         <p>
           Serves {{ recipe.servings }} portions 
         </p>
         <form method="get"> 
-          <input type="number" name="servings" required>
+          <input type="number" name="servings" required min="0">
           <p><button class="button">Resize</button></p>
         </form> 
       {% endif %}
@@ -50,7 +50,7 @@
         <tbody>
           {% for ingredient in recipe.ingredients.all %}
           <tr>
-            <td>{{ ingredient|resize_to:servings }}</td>
+            <td>{{ ingredient|resize_to:servings|floatformat:2 }}</td>
             <td>{{ ingredient.measure.name }}</td>
             <td>{{ ingredient.food.name }}</td>
             <td>
